@@ -1,0 +1,9 @@
+.container{
+    height: 85%;
+    /* background-color: antiquewhite; */
+    max-width: 100%;
+}
+
+i{
+    padding-right: .6rem;
+}
