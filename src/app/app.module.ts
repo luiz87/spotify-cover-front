@@ -20,6 +20,7 @@ import { ArtistaCrudComponent } from './components/views/artista/artista-crud/ar
 import { HomeComponent } from './components/views/home/home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AlbumCrudComponent } from './components/views/album/album-crud/album-crud.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     FooterComponent,
     NavComponent,
     HomeComponent,
-    ArtistaCrudComponent
+    ArtistaCrudComponent,
+    AlbumCrudComponent
   ],
   imports: [
     BrowserModule,

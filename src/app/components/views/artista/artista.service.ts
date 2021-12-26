@@ -8,16 +8,17 @@ import { environment } from 'src/environments/environment';
 })
 export class ArtistaService {
 
-  baseUrl: String = environment.baseUrl
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<any> {
-    const url = `${this.baseUrl}`
+  find(url: string): Observable<any> {
     return this.http.get<any[]>(url)
   }
 
-  create(obj: any): Observable<any> {
-    const url = `${this.baseUrl}`
+  findAll(url: string): Observable<any> {
+    return this.http.get<any[]>(url)
+  }
+
+  create(url: string, obj: any): Observable<any> {
     return this.http.post<any>(url, obj)
   }
 

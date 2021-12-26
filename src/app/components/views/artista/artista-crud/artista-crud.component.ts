@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Artista } from '../artista.model';
 import { ArtistaService } from '../artista.service';
-
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { AlbumCrudComponent } from '../../album/album-crud/album-crud.component';
 @Component({
   selector: 'app-artista-crud',
   templateUrl: './artista-crud.component.html',
@@ -10,14 +12,22 @@ import { ArtistaService } from '../artista.service';
 export class ArtistaCrudComponent implements OnInit {
 
   displayedColumns: string[] = ['nome'];
-  listArtista: any[] = []
+  dataSource: any[] = []
   artista!: Artista
-  constructor(private service: ArtistaService) { }
+  url: string = ""
+
+  constructor(private service: ArtistaService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.baseUrl += "/artista"
+    this.url = environment.baseUrl+"/artista"
     this.refreshPage()
   }
+
+  listAlbum(): void {
+    const rota = this.artista.linkAlbum?.replace(environment.baseUrl,'')
+    this.router.navigate([rota])
+  }
+
   save(): void {
     if (this.artista.link == "") {
       this.create()
@@ -27,7 +37,7 @@ export class ArtistaCrudComponent implements OnInit {
   }
 
   create(): void {
-    this.service.create(this.artista).subscribe(
+    this.service.create(this.url, this.artista).subscribe(
       resp => {
         console.log(resp)
         this.refreshPage()
@@ -36,6 +46,7 @@ export class ArtistaCrudComponent implements OnInit {
   }
 
   update(): void {
+    console.log(this.artista)
     this.service.update(this.artista).subscribe(
       resp => {
         console.log(resp)
@@ -45,9 +56,9 @@ export class ArtistaCrudComponent implements OnInit {
   }
 
   findAll(): void {
-    this.service.findAll().subscribe(
+    this.service.findAll(this.url).subscribe(
       resposta => {
-        this.listArtista = resposta._embedded.artista
+        this.dataSource = resposta._embedded.artista
       }
     )
   }
@@ -62,7 +73,8 @@ export class ArtistaCrudComponent implements OnInit {
   select(a: any) {
     this.artista = {
       link: a._links.self.href,
-      nome: a.nome
+      nome: a.nome,
+      linkAlbum: a._links.listAlbum.href,
     }
   }
 

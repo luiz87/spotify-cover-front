@@ -1,0 +1,62 @@
+form{
+    text-align: center;
+    width: 100%;
+    margin: 2rem auto 0 auto;
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+}
+
+.form{
+    width: 100%;
+}
+
+.buttons{
+    text-align: end;
+    width: 100%;
+}
+
+.content{
+    width: 90%;
+    margin: 1.4rem auto auto auto;
+}
+
+.title{
+    text-align: left;
+
+}
+
+.title h1{
+    font-size: 2rem;
+    color: rgb(92, 92, 92);
+    font-weight: 500;
+}
+
+table{
+    width: 100%;
+}
+
+.edit{
+    color: darkcyan;
+}
+
+.delete{
+    color: red;
+}
+
+.livros{
+    color: burlywood;
+}
+
+.buttons{
+    margin-bottom: .8rem;
+    text-align: end;
+    width: 100%;
+}
+
+tr td{
+    cursor: pointer;
+}

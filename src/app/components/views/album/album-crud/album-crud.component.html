@@ -1,17 +1,17 @@
 <div class="content">
     <form>
         <div class="title">
-            <h1>Gerenciar Artistas</h1>
+            <h1>{{artista.nome}} Gerenciar Albuns</h1>
         </div>
         <mat-form-field class="form">
             <mat-label>Nome</mat-label>
-            <input matInput [(ngModel)]="artista.nome" type="text" name="nome" placeholder="Ex. Linkn Park">
+            <input matInput [(ngModel)]="album.nome" type="text" name="nome" placeholder="Ex. CD 001">
         </mat-form-field>
         <div class="buttons">
             <button (click)="save()" class="mat-elevation-z2" mat-stroked-button color="primary">Salvar</button>
             <button (click)="cancel()" class="mat-elevation-z2" mat-stroked-button color="basic">Novo</button>
             <button (click)="delete()" class="mat-elevation-z2" mat-stroked-button color="warn">Apagar</button>
-            <button (click)="listAlbum()" class="mat-elevation-z2" mat-raised-button color="primary">Albuns</button>
+            <!-- <button (click)="listAlbum()" class="mat-elevation-z2" mat-raised-button color="primary">Albuns</button> -->
         </div>
     </form>
 

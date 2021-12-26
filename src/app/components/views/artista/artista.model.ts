@@ -1,4 +1,5 @@
 export interface Artista {
     link?: String,
-    nome: String
+    nome: String,
+    linkAlbum?: String
 }
