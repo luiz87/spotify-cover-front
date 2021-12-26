@@ -1,1 +1,31 @@
-<p>artista-crud works!</p>
+<div class="content">
+    <form>
+        <div class="title">
+            <h1>Gerenciar Artistas</h1>
+        </div>
+        <mat-form-field class="form">
+            <mat-label>Nome</mat-label>
+            <input matInput [(ngModel)]="artista.nome" type="text" name="nome" placeholder="Ex. Linkn Park">
+        </mat-form-field>
+        <div class="buttons">
+            <button (click)="save()" class="mat-elevation-z2" mat-stroked-button color="primary">Salvar</button>
+            <button (click)="cancel()" class="mat-elevation-z2" mat-stroked-button color="basic">Novo</button>
+            <button (click)="delete()" class="mat-elevation-z2" mat-stroked-button color="warn">Apagar</button>
+            <!-- <a routerLink="/categoria/{{categoria.id}}" class="mat-elevation-z2" mat-raised-button
+                color="primary">Livros</a> -->
+        </div>
+    </form>
+
+    <div class="mat-elevation-z2">
+        <table mat-table class="" [dataSource]="listArtista">
+
+            <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr (click)="select(row)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
