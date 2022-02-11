@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Artista } from '../artista.model';
 import { ArtistaService } from '../artista.service';
 import { environment } from 'src/environments/environment';
@@ -9,14 +9,18 @@ import { AlbumCrudComponent } from '../../album/album-crud/album-crud.component'
   templateUrl: './artista-crud.component.html',
   styleUrls: ['./artista-crud.component.css']
 })
-export class ArtistaCrudComponent implements OnInit {
+export class ArtistaCrudComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['nome'];
   dataSource: any[] = []
   artista!: Artista
   url: string = ""
+  @ViewChild('btAlbuns') btAlbuns!: ElementRef
 
   constructor(private service: ArtistaService, private router: Router) { }
+  ngAfterViewInit(): void {
+    console.log(this.btAlbuns.nativeElement)
+  }
 
   ngOnInit(): void {
     this.url = environment.baseUrl+"/artista"
@@ -89,6 +93,7 @@ export class ArtistaCrudComponent implements OnInit {
   refreshPage(): void {
     this.findAll()
     this.cancel()
+    // console.log(this.btAlbuns)
   }
 
 }
